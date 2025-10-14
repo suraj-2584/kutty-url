@@ -43,3 +43,7 @@ func ShortenUrlHandler(ctx *gin.Context) {
 		ctx.IndentedJSON(http.StatusCreated, gin.H{"short_url": fmt.Sprintf("%s/%s", constants.BaseUrl, code)})
 	}
 }
+
+func HealthHandler(ctx *gin.Context) {
+	ctx.IndentedJSON(http.StatusOK, nil)
+}

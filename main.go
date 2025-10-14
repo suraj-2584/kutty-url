@@ -12,5 +12,6 @@ func main() {
 	router := gin.Default()
 	router.GET("/:id", handlers.ShortenendUrlHandler)
 	router.POST("/shorten", handlers.ShortenUrlHandler)
+	router.GET("/health", handlers.HealthHandler)
 	router.Run("localhost:5001")
 }
