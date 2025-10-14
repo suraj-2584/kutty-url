@@ -13,5 +13,5 @@ func main() {
 	router.GET("/:id", handlers.ShortenendUrlHandler)
 	router.POST("/shorten", handlers.ShortenUrlHandler)
 	router.GET("/health", handlers.HealthHandler)
-	router.Run("localhost:5001")
+	router.Run(":5001")
 }
