@@ -5,11 +5,9 @@ import (
 	"os"
 )
 
-var BaseUrl = fmt.Sprintf("http://%s:%s", host, port)
+var BaseUrl = fmt.Sprintf("https://%s", host)
 
 var host = os.Getenv("HOST")
-
-const port = "5001"
 
 var UrlNotFoundError = map[string]string{"message": "invalid url."}
 var InternalServerError = map[string]string{"message": "server error. Please try again later."}
