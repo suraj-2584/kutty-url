@@ -2,6 +2,7 @@ package utils
 
 import (
 	"deps/url-shortener/internal/constants"
+	"encoding/json"
 	"log"
 	"net/url"
 
@@ -35,6 +36,9 @@ func IntToBase62String(num int32) string {
 }
 
 func LoadSecrets() {
+	type mongoSecret struct {
+		ConnectionString string `json:"MONGO_CONNECTION_STRING"`
+	}
 	secretName := "kutty-url"
 	region := "ap-south-1"
 
@@ -43,6 +47,7 @@ func LoadSecrets() {
 		log.Fatal(err)
 	}
 
+	var secret mongoSecret
 	// Create Secrets Manager client
 	svc := secretsmanager.NewFromConfig(config)
 
@@ -56,5 +61,6 @@ func LoadSecrets() {
 	}
 
 	// Decrypts secret using the associated KMS key.
-	constants.ConnectionString = *result.SecretString
+	_ = json.Unmarshal([]byte(*result.SecretString), &secret)
+	constants.ConnectionString = secret.ConnectionString
 }
