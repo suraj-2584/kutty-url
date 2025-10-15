@@ -11,10 +11,6 @@ import (
 func main() {
 	utils.LoadSecrets()
 	router := gin.Default()
-	router.Use()
-	router.GET("/:id", handlers.ShortenendUrlHandler)
-	router.POST("/shorten", handlers.ShortenUrlHandler)
-	router.GET("/health", handlers.HealthHandler)
 	router.Use(cors.New(cors.Config{
 		AllowOrigins:     []string{"http://localhost:*", "https://kutty-url.in"},
 		AllowHeaders:     []string{"Origin", "Content-Type", "Authorization"},
@@ -22,5 +18,8 @@ func main() {
 		AllowCredentials: true,
 		AllowWildcard:    true,
 	}))
+	router.GET("/:id", handlers.ShortenendUrlHandler)
+	router.POST("/shorten", handlers.ShortenUrlHandler)
+	router.GET("/health", handlers.HealthHandler)
 	router.Run(":5001")
 }
