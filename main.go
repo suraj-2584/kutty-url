@@ -12,7 +12,7 @@ func main() {
 	utils.LoadSecrets()
 	router := gin.Default()
 	router.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"http://localhost:5172", "https://kutty-url.in"},
+		AllowOrigins:     []string{"https://kutty-url.in"},
 		AllowHeaders:     []string{"Origin", "Content-Type", "Authorization"},
 		ExposeHeaders:    []string{"Content-Length"},
 		AllowCredentials: true,

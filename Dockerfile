@@ -9,5 +9,5 @@ FROM alpine:latest AS final
 WORKDIR /app
 COPY --from=builder /app/main .
 EXPOSE 5001
-ENV HOST="localhost"
+ENV HOST="kutty-url.in"
 CMD ["./main"]
